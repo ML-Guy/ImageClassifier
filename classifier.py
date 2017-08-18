@@ -27,7 +27,7 @@ def create_model_info(architecture, model_file_name=None, label_file_name=None):
     """
     architecture = architecture.lower()
     if architecture == 'inception_v3':
-        bottleneck_tensor_name = 'pool_3/_reshape:0'
+        bottleneck_tensor_name = 'softmax:0'# for bottelneck use 'pool_3/_reshape:0'
         bottleneck_tensor_size = 2048
         input_width = 299
         input_height = 299
@@ -53,7 +53,7 @@ def create_model_info(architecture, model_file_name=None, label_file_name=None):
         if not label_file_name:
             label_file_name = os.path.join("checkpoints",'inception_v3','imagenet_2012_challenge_label_map_proto.pbtxt')
 
-        bottleneck_tensor_name = 'MobilenetV1/Predictions/Reshape:0'
+        bottleneck_tensor_name = 'MobilenetV1/Predictions/Reshape_1:0'   # for bottelneck use  MobilenetV1/Predictions/Reshape
         bottleneck_tensor_size = 1001
         input_width = size
         input_height = size
